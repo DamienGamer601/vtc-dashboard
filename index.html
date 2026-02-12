@@ -12,15 +12,18 @@
     <div id="welcome-modal" class="modal-overlay">
         <div class="modal-content">
             <h2>🚚 LOGISTIQUE VTC</h2>
-            <p>Entrez votre identifiant de service :</p>
+            <p>Identifiez-vous pour prendre votre service :</p>
             <input type="text" id="driver-input" placeholder="Pseudo Chauffeur">
-            <button onclick="saveDriver()">PRENDRE LE VOLANT</button>
+            <button onclick="saveDriver()">PRENDRE LE POSTE</button>
         </div>
     </div>
 
     <div class="dashboard">
         <header class="status-bar">
-            <span id="driver-name">CHAUFFEUR: ---</span>
+            <div class="header-left">
+                <span id="driver-name">CHAUFFEUR: ---</span>
+                <span id="driver-rank" class="rank-tag">GRADE: ---</span>
+            </div>
             <span id="status-light">SYSTÈME HORS-LIGNE</span>
         </header>
 
@@ -42,10 +45,21 @@
                     </div>
                 </div>
 
+                <div class="rank-progress-container">
+                    <div class="rank-info">
+                        <span id="next-rank-text">Objectif : Junior</span>
+                        <span id="rank-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar rank-bar">
+                        <div id="rank-progress-fill" class="fill"></div>
+                    </div>
+                    <small id="km-remaining">Calcul des kilomètres...</small>
+                </div>
+
                 <div class="damage-section">
-                    <label>ÉTAT CAMION</label>
+                    <label>DÉGÂTS CAMION</label>
                     <div class="progress-bar"><div id="truck-damage-fill" class="fill"></div></div>
-                    <label>ÉTAT CARGO</label>
+                    <label>DÉGÂTS CARGO</label>
                     <div class="progress-bar"><div id="cargo-damage-fill" class="fill"></div></div>
                 </div>
             </section>
@@ -54,6 +68,7 @@
                 <div id="map"></div>
                 <div class="session-info">
                     <p>Distance Session: <span id="session-dist">0.00</span> km</p>
+                    <p>Total Historique: <span id="total-dist-hist">0</span> km</p>
                     <button id="btn-finish" onclick="envoyerRapportVTC()">TERMINER LE SERVICE</button>
                 </div>
             </section>
