@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Pro Dashboard - ETS2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>🚚 LOGISTIQUE VTC</h2>
+            <p>Entrez votre identifiant de service :</p>
+            <input type="text" id="driver-input" placeholder="Pseudo Chauffeur">
+            <button onclick="saveDriver()">PRENDRE LE VOLANT</button>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <header class="status-bar">
+            <span id="driver-name">CHAUFFEUR: ---</span>
+            <span id="status-light">SYSTÈME HORS-LIGNE</span>
+        </header>
+
+        <div class="main-layout">
+            <section class="telemetry">
+                <div class="speed-display">
+                    <div id="speed" class="digital-font">0</div>
+                    <div class="unit">KM/H</div>
+                </div>
+                
+                <div class="grid-stats">
+                    <div class="card">
+                        <label>POINTS PERMIS</label>
+                        <div id="license-points" class="value">12</div>
+                    </div>
+                    <div class="card">
+                        <label>PAUSE DANS</label>
+                        <div id="rest-time" class="value digital-font">--:--</div>
+                    </div>
+                </div>
+
+                <div class="damage-section">
+                    <label>ÉTAT CAMION</label>
+                    <div class="progress-bar"><div id="truck-damage-fill" class="fill"></div></div>
+                    <label>ÉTAT CARGO</label>
+                    <div class="progress-bar"><div id="cargo-damage-fill" class="fill"></div></div>
+                </div>
+            </section>
+
+            <section class="navigation">
+                <div id="map"></div>
+                <div class="session-info">
+                    <p>Distance Session: <span id="session-dist">0.00</span> km</p>
+                    <button id="btn-finish" onclick="envoyerRapportVTC()">TERMINER LE SERVICE</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
